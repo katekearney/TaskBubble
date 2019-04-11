@@ -17,6 +17,6 @@ struct timerLogic{
          hours = Int(time) / 3600
          minutes = Int(time) / 60 % 60
          seconds = Int(time) % 60
-        return String(format:"%02i:%02i:%02i”, hours, minutes, seconds)
+        return "\(hours): \(minutes): \(seconds)"
     }
 }

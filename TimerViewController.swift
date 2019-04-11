@@ -11,6 +11,7 @@ import UIKit
 class TimerViewController: UIViewController {
     
     
+    @IBOutlet weak var pause: UIButton!
     
     @IBOutlet weak var timerLabel: UILabel!
     
@@ -23,7 +24,7 @@ class TimerViewController: UIViewController {
     
     @objc func updateTimer() {
         seconds -= 1
-        timerLabel.text = String(seconds)
+        timerLabel.text = clock.timeString(time: TimeInterval(seconds))
     }
     
     func runTimer(){
@@ -34,9 +35,11 @@ class TimerViewController: UIViewController {
         if self.resumeTapped == false {
             timer.invalidate()
             self.resumeTapped = true
+            self.pause.setTitle("Resume", for: .normal)
         } else {
             runTimer()
             self.resumeTapped = false
+            self.pause.setTitle("Pause", for: .normal)
         }
     }
     
@@ -44,6 +47,7 @@ class TimerViewController: UIViewController {
         timer.invalidate()
         seconds = 60
         timerLabel.text = "\(seconds)"
+        isTimerRunning = false
     }
     
     
