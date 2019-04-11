@@ -40,10 +40,12 @@ class TimerViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func doneButton(_ sender: Any) {
+        timer.invalidate()
+        seconds = 60
+        timerLabel.text = "\(seconds)"
     }
     
+    
+   
 }
