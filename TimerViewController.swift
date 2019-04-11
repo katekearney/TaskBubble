@@ -12,6 +12,8 @@ class TimerViewController: UIViewController {
     
     
     
+    @IBOutlet weak var timerLabel: UILabel!
+    
     var clock = timerLogic()
     var seconds = 60
     var timer = Timer()
@@ -25,10 +27,10 @@ class TimerViewController: UIViewController {
     }
     
     func runTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(timerView.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(TimerViewController.updateTimer)), userInfo: nil, repeats: true)
     }
 
-    @IBAction func pauseButton(_ sender: Any) {
+    @IBAction func pauseButton(_ sender: UIButton) {
         if self.resumeTapped == false {
             timer.invalidate()
             self.resumeTapped = true
